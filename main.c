@@ -44,19 +44,16 @@ int main() {
 void insertData(const char* data, struct node** ptrToHead, int location) {
         struct node* temp;
         struct node* tmp;
-        struct node* tm;
         temp = makeNode(data, NULL);
     if(location == 0) {
         temp->next = (*ptrToHead);
         (*ptrToHead) = temp;
     } else if(location == 1) {
         tmp = *ptrToHead;
-        tm = tmp;
         while(tmp->next != NULL) {
             tmp = tmp->next;
         }
         tmp->next = temp;
-        (*ptrToHead) = tm;
     } else {
         printf("Invalid Location");
         exit(1);
