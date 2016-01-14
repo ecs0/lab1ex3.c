@@ -7,11 +7,9 @@ struct node {
     struct node* next;
 };
 
-// Two functions already implemented
 struct node* makeNode(const char* data, struct node* n);
 void printll(struct node* n);
 
-// A function you will implement
 void insertData(const char* data, struct node** ptrToHead, int location);
 
 int main() {
@@ -32,8 +30,17 @@ int main() {
     insertData("Tyrion",&head,0);
     printll(head);
 
+    insertData("Tyrion",&head,9);
+    printll(head);
+
     return 0;
 }
+/*
+ * Insert data into singly linked list
+ * location 0 inserts at the beginning of the list
+ * location 1 inserts at the end of the list
+ * Error if location not 0 or 1.
+ */
 void insertData(const char* data, struct node** ptrToHead, int location) {
         struct node* temp;
         struct node* tmp;
@@ -42,11 +49,12 @@ void insertData(const char* data, struct node** ptrToHead, int location) {
         tmp = (*ptrToHead);
         (*ptrToHead) = temp;
         (*ptrToHead)->next = tmp;
-    } else {
+    } else if(location == 1) {
         tmp = *ptrToHead;
         while((*ptrToHead)->next != NULL) {
             *ptrToHead = (*ptrToHead)->next;
         }
+
 //        while(tmp->next != NULL) {
 //            tmp = tmp->next;
 //        }
@@ -54,6 +62,9 @@ void insertData(const char* data, struct node** ptrToHead, int location) {
 //        (*ptrToHead) = tmp;
         (*ptrToHead)->next = temp;
         (*ptrToHead) = tmp;
+    } else {
+        printf("Invalid Location");
+        exit(1);
     }
 }
 
@@ -72,6 +83,3 @@ void printll(struct node* n) {
     }
     if(n!=NULL) printf("%s\n",n->data);
 }
-
-
-
