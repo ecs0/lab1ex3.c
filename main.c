@@ -29,7 +29,7 @@ int main() {
     printll(head);
     insertData("Tyrion",&head,0);
     printll(head);
-
+// insert bad data
     insertData("Tyrion",&head,9);
     printll(head);
 
@@ -44,24 +44,19 @@ int main() {
 void insertData(const char* data, struct node** ptrToHead, int location) {
         struct node* temp;
         struct node* tmp;
+        struct node* tm;
         temp = makeNode(data, NULL);
     if(location == 0) {
-        tmp = (*ptrToHead);
+        temp->next = (*ptrToHead);
         (*ptrToHead) = temp;
-        (*ptrToHead)->next = tmp;
     } else if(location == 1) {
         tmp = *ptrToHead;
-        while((*ptrToHead)->next != NULL) {
-            *ptrToHead = (*ptrToHead)->next;
+        tm = tmp;
+        while(tmp->next != NULL) {
+            tmp = tmp->next;
         }
-
-//        while(tmp->next != NULL) {
-//            tmp = tmp->next;
-//        }
-//        tmp->next = temp;
-//        (*ptrToHead) = tmp;
-        (*ptrToHead)->next = temp;
-        (*ptrToHead) = tmp;
+        tmp->next = temp;
+        (*ptrToHead) = tm;
     } else {
         printf("Invalid Location");
         exit(1);
