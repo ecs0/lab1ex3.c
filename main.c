@@ -55,7 +55,7 @@ void insertData(const char* data, struct node** ptrToHead, int location) {
         }
         tmp->next = temp;
     } else {
-        printf("Invalid Location");
+        printf("Invalid Location \n");
         exit(1);
     }
 }
