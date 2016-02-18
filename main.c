@@ -73,5 +73,7 @@ void printll(struct node* n) {
         printf("%s ---> ",n->data);
         n = n->next;
     }
-    if(n!=NULL) printf("%s\n",n->data);
+    if(n!=NULL){
+        printf("%s\n",n->data);
+    }
 }
